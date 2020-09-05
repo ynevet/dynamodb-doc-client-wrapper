@@ -19,11 +19,9 @@ import { DocumentClientWrapper, ClientType } from "../infra/dynamo-document-clie
 import { DocumentClient } from "aws-sdk/lib/dynamodb/document_client";
 
 // Initialized as DAX docuemnt client:
-console.log("Going to initialize a DAX document client");
-clientWrapper = new DocumentClientWrapper(ClientType.DynamoDBDax, [appConfig.dynamoDaxEndpoint()], appConfig.dynamoRegion(), appConfig.dynamoTimeout());
+clientWrapper = new DocumentClientWrapper(ClientType.DynamoDBDax, ['ENDPOINT'], '[REGION]', '[TIMEOUT]');
 
 
 // Initialized as DAX docuemnt client:
-console.log("Going to initialize a dynamaoDB document client");
-clientWrapper = new DocumentClientWrapper(ClientType.DynamoDB, [appConfig.dynamoEndpoint()], appConfig.dynamoRegion(), appConfig.dynamoTimeout());
+clientWrapper = new DocumentClientWrapper(ClientType.DynamoDB, ['ENDPOINT'], '[REGION]', '[TIMEOUT]');
 ```
