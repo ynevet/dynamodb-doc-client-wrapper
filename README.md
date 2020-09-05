@@ -7,7 +7,7 @@ A wrapper class around AWS DynamoDB document client that allows initializing an 
 ## Installation:
 ```shell
 # using npm
-npm install npm i aws-dynamodb-doc-client-wrapper
+npm install aws-dynamodb-doc-client-wrapper -s
 # using yarn
 yarn add aws-dynamodb-doc-client-wrapper
 ```
