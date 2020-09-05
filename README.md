@@ -4,6 +4,9 @@
 
 A wrapper class around AWS DynamoDB document client that allows initializing & swapping between AWS DynamoDB to AWS DAX client easily
 
+## Motivation
+Easily initialization in case when only one of the clients are available for use 
+
 ## Installation:
 ```shell
 # using npm
