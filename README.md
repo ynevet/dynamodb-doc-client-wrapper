@@ -2,7 +2,7 @@
 
 ## Description
 
-A wrapper class around AWS DynamoDB document client that allows to easily initialize an AWS DynamoDB or AWS DAX client
+A wrapper class around AWS DynamoDB document client that allows initializing an AWS DynamoDB or AWS DAX client easily
 
 ## Installation:
 ```shell
