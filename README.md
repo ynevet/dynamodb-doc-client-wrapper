@@ -1,4 +1,4 @@
-# amazon-dynamodb-doc-client-wrapper
+# aws-dynamodb-doc-client-wrapper
 
 ## Description
 
@@ -6,7 +6,10 @@ A wrapper class around AWS DynamoDB document client that allows to easily initia
 
 ## Installation:
 ```shell
-npm install amazon-dynamodb-doc-client-wrapper
+# using npm
+npm install npm i aws-dynamodb-doc-client-wrapper
+# using yarn
+yarn add aws-dynamodb-doc-client-wrapper
 ```
 
 ## Usage example:
