@@ -15,7 +15,7 @@ yarn add aws-dynamodb-doc-client-wrapper
 ## Usage example:
 
 ```typescript
-import { DocumentClientWrapper, ClientType } from "../infra/dynamo-document-client-wrapper";
+import { DocumentClientWrapper, ClientType } from "aws-dynamodb-doc-client-wrapper";
 import { DocumentClient } from "aws-sdk/lib/dynamodb/document_client";
 
 // Initialized as DAX docuemnt client:
