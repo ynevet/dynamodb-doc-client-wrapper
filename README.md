@@ -1,2 +1,2 @@
 # amazon-dynamodb-doc-client-wrapper
-A wrapper around AWS DynamoDB document client (DynamoDB/DAX)
+A wrapper class around AWS DynamoDB document client for DynamoDB or DAX usages.
