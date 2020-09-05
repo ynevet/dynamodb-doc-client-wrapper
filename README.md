@@ -22,6 +22,6 @@ import { DocumentClient } from "aws-sdk/lib/dynamodb/document_client";
 clientWrapper = new DocumentClientWrapper(ClientType.DynamoDBDax, ['ENDPOINT'], '[REGION]', '[TIMEOUT]');
 
 
-// Initialized as DAX docuemnt client:
+// Initialized as a DynamoDB docuemnt client:
 clientWrapper = new DocumentClientWrapper(ClientType.DynamoDB, ['ENDPOINT'], '[REGION]', '[TIMEOUT]');
 ```
