@@ -3,57 +3,56 @@ import AmazonDaxClient from 'amazon-dax-client';
 import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 
 export class DocumentClientWrapper {
-    endpoints: (string | undefined)[];
-    region: string;
-    clientType: ClientType;
-    timeout: number;
+  endpoints: (string | undefined)[];
+  region: string;
+  clientType: ClientType;
+  timeout: number;
 
-    constructor(clientType: ClientType, endpoints: (string | undefined)[], region: string, timeout: number) {
-
-        if (!endpoints || endpoints.length === 0) {
-            throw new Error("endpoints can't be null or empty");
-        }
-
-        if (!region) {
-            throw new Error("region can't be null");
-        }
-
-        this.endpoints = endpoints;
-        this.region = region;
-        this.clientType = clientType;
-        this.timeout = timeout
+  constructor(clientType: ClientType, endpoints: (string | undefined)[], region: string, timeout: number) {
+    if (!endpoints || endpoints.length === 0) {
+      throw new Error("endpoints can't be null or empty");
     }
 
-    getClient(): DocumentClient {
-        let service: AWS.DynamoDB | undefined;
+    if (!region) {
+      throw new Error("region can't be null");
+    }
 
-        switch (this.clientType) {
-            case ClientType.DynamoDB: {
-                const [endpoint] = this.endpoints;
-                service = new AWS.DynamoDB({
-                    region: this.region,
-                    endpoint: endpoint,
-                    httpOptions: {
-                        timeout: this.timeout,
-                    },
-                    maxRetries: 3
-                });
-                break;
-            }
-            case ClientType.DynamoDBDax: {
-                service = new AmazonDaxClient({ endpoints: this.endpoints, region: this.region });
-                break;
-            }
-        }
+    this.endpoints = endpoints;
+    this.region = region;
+    this.clientType = clientType;
+    this.timeout = timeout;
+  }
 
-        return new AWS.DynamoDB.DocumentClient({
-            service: service,
-            region: this.region,
+  getClient(): DocumentClient {
+    let service: AWS.DynamoDB | undefined;
+
+    switch (this.clientType) {
+      case ClientType.DynamoDB: {
+        const [endpoint] = this.endpoints;
+        service = new AWS.DynamoDB({
+          region: this.region,
+          endpoint,
+          httpOptions: {
+            timeout: this.timeout,
+          },
+          maxRetries: 3,
         });
+        break;
+      }
+      case ClientType.DynamoDBDax: {
+        service = new AmazonDaxClient({ endpoints: this.endpoints, region: this.region });
+        break;
+      }
     }
+
+    return new AWS.DynamoDB.DocumentClient({
+      service,
+      region: this.region,
+    });
+  }
 }
 
 export enum ClientType {
-    DynamoDB,
-    DynamoDBDax
+  DynamoDB,
+  DynamoDBDax,
 }
