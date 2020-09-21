@@ -2,6 +2,11 @@ import AWS from 'aws-sdk';
 import AmazonDaxClient from 'amazon-dax-client';
 import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 
+type Config = {
+  timeout?: number;
+  maxRetries?: number;
+}
+
 export class DocumentClientWrapper {
 	endpoints: (string | undefined)[];
 	region: string;
@@ -9,7 +14,7 @@ export class DocumentClientWrapper {
   timeout: number;
   maxRetries: number 
 
-  constructor(clientType: ClientType, endpoints: (string | undefined)[], region: string, timeout?: number, maxRetries?: number) {
+  constructor(clientType: ClientType, endpoints: (string | undefined)[], region: string, config?: Config) {
 		if (!endpoints || endpoints.length === 0) {
 			throw new Error("endpoints can't be null or empty");
 		}
@@ -21,8 +26,8 @@ export class DocumentClientWrapper {
 		this.endpoints = endpoints;
 		this.region = region;
 		this.clientType = clientType;
-    this.timeout = timeout ?? 10000;
-    this.maxRetries = maxRetries ?? 5;
+    this.timeout = config?.timeout ? config.timeout : 10000; 
+    this.maxRetries = config?.maxRetries ? config?.maxRetries : 5;
 	}
 
 	getClient(): DocumentClient {
@@ -36,7 +41,7 @@ export class DocumentClientWrapper {
 					endpoint,
 					httpOptions: {
 						timeout: this.timeout
-					},
+          },
 					maxRetries: this.maxRetries
 				});
 				break;
