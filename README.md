@@ -22,9 +22,9 @@ import { DocumentClientWrapper, ClientType } from "aws-dynamodb-doc-client-wrapp
 import { DocumentClient } from "aws-sdk/lib/dynamodb/document_client";
 
 // Initialized as DAX docuemnt client:
-clientWrapper = new DocumentClientWrapper(ClientType.DynamoDBDax, ['ENDPOINT'], '[REGION]', '[TIMEOUT]');
+clientWrapper = new DocumentClientWrapper(ClientType.DynamoDBDax, ['ENDPOINT'], '[REGION]', '[TIMEOUT]'. '[MAX-RETRIES]');
 
 
 // Initialized as DynamoDB docuemnt client:
-clientWrapper = new DocumentClientWrapper(ClientType.DynamoDB, ['ENDPOINT'], '[REGION]', '[TIMEOUT]');
+clientWrapper = new DocumentClientWrapper(ClientType.DynamoDB, ['ENDPOINT'], '[REGION]', '[TIMEOUT]'. '[MAX-RETRIES]');
 ```
