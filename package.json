@@ -1,6 +1,6 @@
 {
   "name": "aws-dynamodb-doc-client-wrapper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Wrapps AWS DynamoDB document client for either DynamoDB client or DAX client",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
